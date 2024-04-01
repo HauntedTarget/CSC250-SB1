@@ -9,6 +9,7 @@ namespace TestSorting.Sorting
     [TestClass]
     public class SelectionSort
     {
+        UnitData sortingTest = new();
 
         [TestMethod]
         public void SortMethod()
