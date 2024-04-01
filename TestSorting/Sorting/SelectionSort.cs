@@ -2,7 +2,7 @@
 using NUnit.Framework;
 using NUnit.Framework.Interfaces;
 using NUnit.Framework.Internal;
-using Assert = NUnit.Framework.Assert;
+using Assert = Microsoft.VisualStudio.TestTools.UnitTesting.Assert;
 
 namespace TestSorting.Sorting
 {
@@ -15,6 +15,7 @@ namespace TestSorting.Sorting
         public void SortMethod()
         {
             //TODO: Make sorting algorithm
+            Assert.AreEqual(sortingTest.CheckSort(), true);
         }
     }
 }

@@ -2,7 +2,7 @@
 using NUnit.Framework;
 using NUnit.Framework.Interfaces;
 using NUnit.Framework.Internal;
-using Assert = NUnit.Framework.Assert;
+using Assert = Microsoft.VisualStudio.TestTools.UnitTesting.Assert;
 
 namespace TestSorting.Sorting
 {
@@ -39,7 +39,6 @@ namespace TestSorting.Sorting
              * }while (while iterations < item.length)
              */
 
-            //TODO: Make sorting algorithm
             do
             {
                 int selectedItem = sortingTest.data[iterations];
@@ -66,6 +65,7 @@ namespace TestSorting.Sorting
             }while (iterations < sortingTest.data.Length);
 
             Console.WriteLine(sortingTest.data.ToString());
+            Assert.AreEqual(sortingTest.CheckSort(), true);
         }
     }
 }

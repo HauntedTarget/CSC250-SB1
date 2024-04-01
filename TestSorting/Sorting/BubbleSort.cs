@@ -2,7 +2,7 @@
 using NUnit.Framework;
 using NUnit.Framework.Interfaces;
 using NUnit.Framework.Internal;
-using Assert = NUnit.Framework.Assert;
+using Assert = Microsoft.VisualStudio.TestTools.UnitTesting.Assert;
 
 namespace TestSorting.Sorting
 {
@@ -44,7 +44,8 @@ namespace TestSorting.Sorting
             while(numbersSwapped > 0);
 
             Console.WriteLine(sortingTest.data.ToString());
-            
+            Assert.AreEqual(sortingTest.CheckSort(), true);
+
         }
     }
 }
