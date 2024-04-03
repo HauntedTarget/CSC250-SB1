@@ -6,14 +6,11 @@ using Assert = Microsoft.VisualStudio.TestTools.UnitTesting.Assert;
 
 namespace TestSorting.Sorting
 {
-    [TestClass]
     public class SelectionSort
     {
-        UnitData sortingTest = new();
         int iterations = 0, lowestNum = 0;
 
-        [TestMethod]
-        public void SortMethod()
+        public int[] SortMethod(int[] unsortedArray)
         {
             //First element of array is start.
             /*
@@ -43,29 +40,31 @@ namespace TestSorting.Sorting
 
             do
             {
-                int selectedItem = sortingTest.data[iterations];
-                int lowestNum = sortingTest.data[iterations];
+                if (unsortedArray.Length < 2) break;
+
+                int selectedItem = unsortedArray[iterations];
+                int lowestNum = unsortedArray[iterations];
                 int lowestI = 0 + iterations;
 
-                for (int i = 0 + iterations; i < sortingTest.data.Length; i++)
+                for (int i = 0 + iterations; i < unsortedArray.Length; i++)
                 {
-                    if (sortingTest.data[i] < lowestNum)
+                    if (unsortedArray[i] < lowestNum)
                     {
                         lowestI = i;
-                        lowestNum = sortingTest.data[i];
+                        lowestNum = unsortedArray[i];
                     }
                 }
 
-                sortingTest.data[lowestI] = selectedItem;
-                sortingTest.data[iterations] = lowestNum;
+                unsortedArray[lowestI] = selectedItem;
+                unsortedArray[iterations] = lowestNum;
 
                 iterations++;
 
-            } while (iterations < sortingTest.data.Length);
+            } while (iterations < unsortedArray.Length);
 
-            Console.WriteLine(sortingTest.data.ToString());
+            Console.WriteLine(unsortedArray.ToString());
 
-            Assert.AreEqual(sortingTest.CheckSort(), true);
+            return unsortedArray;
         }
     }
 }

@@ -6,14 +6,11 @@ using Assert = Microsoft.VisualStudio.TestTools.UnitTesting.Assert;
 
 namespace TestSorting.Sorting
 {
-    [TestClass]
     public class InsertionSort
     {
-        UnitData sortingTest = new();
         int iterations = 1;
 
-        [TestMethod]
-        public void SortMethod()
+        public int[] SortMethod(int[] unsortedArray)
         {
             //First element of array is counted as a part of the sorted set.
             /*
@@ -41,20 +38,22 @@ namespace TestSorting.Sorting
 
             do
             {
-                int selectedItem = sortingTest.data[iterations];
+                if (unsortedArray.Length < 2) break;
 
-                if (selectedItem < sortingTest.data[iterations - 1])
+                int selectedItem = unsortedArray[iterations];
+
+                if (selectedItem < unsortedArray[iterations - 1])
                 {
                     for (int i = iterations - 1; i >= 0; i--)
                     {
-                        sortingTest.data[i + 1] = sortingTest.data[i];
+                        unsortedArray[i + 1] = unsortedArray[i];
                         if (i == 0)
                         {
-                            sortingTest.data[i] = selectedItem;
+                            unsortedArray[i] = selectedItem;
                         }
-                        else if (sortingTest.data[i - 1] < selectedItem)
+                        else if (unsortedArray[i - 1] < selectedItem)
                         {
-                            sortingTest.data[i] = selectedItem;
+                            unsortedArray[i] = selectedItem;
                             break;
                         }
                     }
@@ -62,10 +61,11 @@ namespace TestSorting.Sorting
 
                 iterations++;
 
-            }while (iterations < sortingTest.data.Length);
+            }while (iterations < unsortedArray.Length);
 
-            Console.WriteLine(sortingTest.data.ToString());
-            Assert.AreEqual(sortingTest.CheckSort(), true);
+            Console.WriteLine(unsortedArray.ToString());
+
+            return unsortedArray;
         }
     }
 }
